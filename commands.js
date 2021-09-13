@@ -1,54 +1,54 @@
 var utils = require('./utils')
 
-setScreenMetrics(1080, 2340)
+
 
 var click2 = utils.click
 var sleep2 = utils.sleep
 
-const SkillY = 850
-const MasterSkillY = 479
+const SkillY = 750
+const MasterSkillY = 430
 const ChangeY = 536
-const AvatarY = 614
+const AvatarY = 514
 
 const Avatar1 = [732, AvatarY]
-const Avatar2 = [1230, AvatarY]
+const Avatar2 = [1030, AvatarY]
 const Avatar3 = [1660, AvatarY]
 const Confirm = [1569,655]
 
 // 从者一号位
 const C1S1 = [150,SkillY]
 const C1S2 = [270, SkillY]
-const C1S3 = [480,SkillY]
+const C1S3 = [440,SkillY]
 
 // 从者二号位
-const R1S1 = [732,SkillY]
-const R1S2 = [897,SkillY]
-const R1S3 = [1050,SkillY]
+const R1S1 = [632,SkillY]
+const R1S2 = [800,SkillY]
+const R1S3 = [950,SkillY]
 
 // 从者三号位
-const C3S1 = [1315,SkillY]
-const C3S2 = [1452,SkillY]
-const C3S3 = [1610,SkillY]
+const C3S1 = [1155,SkillY]
+const C3S2 = [1300,SkillY]
+const C3S3 = [1480,SkillY]
 
 // 御主技能
-const MasterSkillStart = [2147, MasterSkillY]
-const MasterSkill1 = [1633, MasterSkillY]
-const MasterSkill2 = [1810, MasterSkillY]
-const MasterSkill3 = [1990, MasterSkillY]
+const MasterSkillStart = [1950, MasterSkillY]
+const MasterSkill1 = [1500, MasterSkillY]
+const MasterSkill2 = [1653, MasterSkillY]
+const MasterSkill3 = [1780, MasterSkillY]
 
 // 换人坐标点
 // 换人是三技能
 const ChangeS1 = [255, ChangeY]
 const ChangeS2 = [595, ChangeY]
-const ChangeS3 = [996, ChangeY]
-const ChangeS4 = [1371, ChangeY]
-const ChangeS5 = [1603, ChangeY]
-const ChangeS6 = [2108, ChangeY]
-const ChangeConfirm = [1153, 918]
+const ChangeS3 = [896, ChangeY]
+const ChangeS4 = [1231, ChangeY]
+const ChangeS5 = [1503, ChangeY]
+const ChangeS6 = [1800, ChangeY]
+const ChangeConfirm = [1153, 800]
 
 function useMasterSkill(i) {
   click2(MasterSkillStart[0], MasterSkillStart[1], true)
-  sleep2(150)
+  sleep2(250)
   use(i)
 }
 
@@ -57,7 +57,7 @@ function use(t) {
   var avatar = t[1]
   click2(i[0],i[1], true)
   sleep2(200)
-  click2(Confirm[0],Confirm[1], true)
+  // click2(Confirm[0],Confirm[1], true)
   sleep2(100)
   click2(avatar[0],avatar[1], true)
   sleep2(3000)
@@ -66,11 +66,11 @@ function use(t) {
 // t: [from, to]
 function changeServant(t) {
   click2(MasterSkillStart[0], MasterSkillStart[1], true)
-  sleep2(150)
+  sleep2(200)
   // 换人服是三技能
   click2(MasterSkill3[0], MasterSkill3[1], true)
   sleep2(200)
-  click2(Confirm[0],Confirm[1], true)
+  // click2(Confirm[0],Confirm[1], true)
   sleep2(100)
   click2(t[0][0], t[0][1], true)
   sleep2(100)

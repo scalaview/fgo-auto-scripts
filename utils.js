@@ -7,18 +7,19 @@ var resize = function(x, y) {
 }
 
 /**
- * 
- * @param {*} x 
- * @param {*} y 
+ *
+ * @param {*} x
+ * @param {*} y
  * @param {*} r resize or not
  */
 var click1 = function(x, y, r) {
   let p = [x, y]
-  if (r) {
+  // if (r) {
     p = resize(x, y)
-  }
+  //}
   const _x = p[0] + random(-10,10)
   const _y = p[1] + random(-10,10)
+  console.log("x: ", _x, " , y: ", _y)
   click(_x, _y)
 }
 
@@ -27,12 +28,12 @@ var sleep1 = function(t) {
 }
 
 /**
- * 
- * @param {*} x1 
- * @param {*} y1 
- * @param {*} x2 
- * @param {*} y2 
- * @param {*} duration 
+ *
+ * @param {*} x1
+ * @param {*} y1
+ * @param {*} x2
+ * @param {*} y2
+ * @param {*} duration
  * @param {*} r resize or not
  */
 var swipe1 = function(x1, y1, x2, y2, duration, r) {
@@ -59,13 +60,13 @@ var findButton = function (b, options) {
   const maxTimes = options ? options.maxTimes || 100 : 200
   const interval = options ? options.interval || 100  : 100
   const threshold = options ? options.threshold || 0.7 : 0.7
-  
+
   for (let i = 0; i < maxTimes; i++) {
     const point = findImage(captureScreen(), b, { threshold: threshold })
 
     if (point) {
         return [
-          Math.floor(point.x + b.getWidth() / 2), 
+          Math.floor(point.x + b.getWidth() / 2),
           Math.floor(point.y + b.getHeight() / 2)
         ]
     }

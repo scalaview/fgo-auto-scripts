@@ -28,10 +28,11 @@ const customCmd = storage.get('customCmd') || ''
 
 toast(apple ? '吃苹果' : '不吃苹果')
 
-const Battle = [1953,900]
+const Battle = [1780,750]
 const CardSP = [1199,340]
-const Card1= [275,764]
-const Card2 = [755,764]
+const Card1= [275,650]
+const Card2 = [655,650]
+const EmptySpace = [1920,993]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
@@ -110,7 +111,7 @@ function nextTurn() {
     toast('完成')
     let p = null
     while (!p) {
-        click1(1920,993, true)
+        click1(EmptySpace[0], EmptySpace[1], true)
         sleep1(300)
         p = findButton(NextImage, {maxTimes:1})
     }
