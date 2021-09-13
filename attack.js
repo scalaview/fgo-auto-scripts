@@ -30,8 +30,8 @@ toast(apple ? '吃苹果' : '不吃苹果')
 
 const Battle = [1953,900]
 const CardSP = [1199,340]
-const Card1= [475,764]
-const Card2 = [855,764]
+const Card1= [275,764]
+const Card2 = [755,764]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
@@ -99,11 +99,11 @@ function clickRefresh() {
 
 function findAttack() {
     while (!findButton(Attack, {maxTimes:1})) {
-        
+
     }
     toast('进攻')
     return true
-  
+
 }
 
 function nextTurn() {

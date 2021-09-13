@@ -89,13 +89,24 @@ const ChangeConfirm = [1153, 918]
 // click1(Avatar2[0], Avatar2[1], true)
 
 // 换人
-click1(MasterSkillStart[0], MasterSkillStart[1], true)
-sleep1(700)
-click1(MasterSkill3[0], MasterSkill3[1], true)
-sleep1(700)
-click1(ChangeS1[0], ChangeS1[1], true)
-click1(ChangeS6[0], ChangeS6[1], true)
-sleep1(700)
-click1(ChangeConfirm[0], ChangeConfirm[1], true)
+// click1(MasterSkillStart[0], MasterSkillStart[1], true)
+// sleep1(700)
+// click1(MasterSkill3[0], MasterSkill3[1], true)
+// sleep1(700)
+// click1(ChangeS1[0], ChangeS1[1], true)
+// click1(ChangeS6[0], ChangeS6[1], true)
+// sleep1(700)
+// click1(ChangeConfirm[0], ChangeConfirm[1], true)
 
+const Battle = [1953,900]
+const CardSP = [1199,340]
+const Card1= [275,764]
+const Card2 = [755,764]
 
+click1(Battle[0], Battle[1], true)
+sleep1(1600)
+click1(CardSP[0], CardSP[1], true)
+sleep1(700)
+click1(Card1[0], Card1[1], true)
+sleep1(700)
+click1(Card2[0], Card2[1], true)
