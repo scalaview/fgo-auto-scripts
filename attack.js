@@ -32,7 +32,10 @@ const Battle = [1780,750]
 const CardSP = [1199,340]
 const Card1= [275,650]
 const Card2 = [655,650]
-const EmptySpace = [1920,993]
+const NextStep = [1764, 852]
+const ContinueStep = [1400, 752]
+const ApplePosition = [1420, 742]
+const EatAppleConfirm = [1365, 471]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
@@ -40,7 +43,7 @@ const Attack = readImage('./assets/attack.jpg')
 
 function fight() {
     click1(Battle[0],Battle[1], true)
-    sleep1(1500)
+    sleep1(2500)
     click1(CardSP[0],CardSP[1], true)
     sleep1(500)
     click1(Card1[0],Card1[1], true)
@@ -83,9 +86,9 @@ function eatApple() {
             console.log('别吃啊！！！')
             return false
         }
-        click1(1365, 471, true)
+        click1(ApplePosition[0], ApplePosition[1], true)
         sleep1(300)
-        click1(1603,835, true)
+        click1(EatAppleConfirm[0], EatAppleConfirm[1], true)
         console.log('吃屎啦你')
     } else {
         toast('不用吃苹果')
@@ -111,11 +114,11 @@ function nextTurn() {
     toast('完成')
     let p = null
     while (!p) {
-        click1(EmptySpace[0], EmptySpace[1], true)
+        click1(NextStep[0], NextStep[1], true)
         sleep1(300)
         p = findButton(NextImage, {maxTimes:1})
     }
-    click1(1564, 852, true)
+    click1(ContinueStep[0], ContinueStep[1], true)
 
 }
 

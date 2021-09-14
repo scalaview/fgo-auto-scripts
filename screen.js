@@ -1,5 +1,8 @@
 // console.show();
-
+if (!requestScreenCapture(true)) {
+  toast('请求截图失败')
+  exit()
+}
 var str = ""; 
 
 str += "屏幕宽度:" + device.width;
@@ -8,6 +11,9 @@ str += "\n屏幕高度:" + device.height;
 
 console.log(str);
 setScreenMetrics(1080, 2340)
+var servants = {
+  caster: 4
+}
 var rx = 2340
 var ry = 1100
 var resize = function(x, y) {
@@ -29,6 +35,109 @@ var click1 = function(x, y, r) {
     sleep(t + random(0, 80))
   }
 
+  var findButton = function (b, options) {
+    const maxTimes = options ? options.maxTimes || 100 : 200
+    const interval = options ? options.interval || 100  : 100
+    const threshold = options ? options.threshold || 0.7 : 0.7
+
+    for (let i = 0; i < maxTimes; i++) {
+      const point = findImage(captureScreen(), b, { threshold: threshold })
+
+      if (point) {
+          return [
+            Math.floor(point.x + b.getWidth() / 2),
+            Math.floor(point.y + b.getHeight() / 2)
+          ]
+      }
+      sleep1(interval)
+    }
+    return false
+  }
+
+  var readImage = function(img) {
+    console.log(img)
+    const b = images.read(img.toString())
+    return b
+  }
+
+// const NextImage =  readImage('./assets/next.jpg')
+// const ContinueImage =  readImage('./assets/continue.png')
+var images = {}
+// const caster = readImage('./assets/continue.png')
+
+const NextStep = [1764, 852]
+const ContinueStep = [1400, 752]
+function nextTurn() {
+  console.log('完成')
+  let p = null
+  while (!p) {
+      click1(NextStep[0], NextStep[1], true)
+      sleep1(300)
+      p = findButton(NextImage, {maxTimes:1})
+      if (p) {
+        // click1(p[0], p[1], true)
+          console.log('next turn poin: ' + p[0], ' ,', p[1])
+      } else {
+        console.log('NextImage not found')
+      }
+  }
+  // click1(1564, 852, true)
+  click1(700, 852, true)
+
+}
+
+
+
+function initImages () {
+  images['caster'] = [caster]
+  // for (let key in servants) {
+  //   images[key] = []
+  //   for (let i = 1; i <= servants[key]; i++) {
+  //     // console.log(getWholePath(key, i))
+  //     // readImage(getWholePath(key, i))
+  //     readImage('./assets/friends/caster/3.jpg')
+  //     // images[key].push(readImage(getWholePath(key, i)))
+  //   }
+  // }
+}
+
+function getWholePath(servant, idx) {
+  return './assets/friends/' + servant + '/' + idx + '.jpg'
+}
+
+function find(servant) {
+  p = findServantAndSwipe(servant)
+
+  while (!p) {
+    click1(1566,183, true)
+    sleep1(300)
+    click1(1576,842, true)
+    sleep1(3000)
+
+    p = findServantAndSwipe(servant)
+    if (p) {
+        break
+    }
+    sleep1(15000)
+    toast('接着找')
+ }
+ click1(p[0],p[1], false)
+ toast('找到啦 ' + p[0] + ',' + p[1])
+ sleep1(3000)
+}
+
+function findServant(servant) {
+  const imageList = images[servant]
+  let p = null
+  for (let i = 0; i < imageList.length; i++) {
+    // 就搜一次就够了
+    p = findButton(imageList[i], {maxTimes: 1, threshold: 0.9})
+    if (p) {
+      return p
+    }
+  }
+  return p
+}
 
   const SkillY = 750
   const MasterSkillY = 430
@@ -105,10 +214,10 @@ var click1 = function(x, y, r) {
 // sleep1(700)
 // click1(ChangeConfirm[0], ChangeConfirm[1], true)
 
-const Battle = [1953,900]
-const CardSP = [1199,340]
-const Card1= [275,764]
-const Card2 = [755,764]
+// const Battle = [1953,900]
+// const CardSP = [1199,340]
+// const Card1= [275,764]
+// const Card2 = [755,764]
 
 // click1(Battle[0], Battle[1], true)
 // sleep1(1600)
@@ -121,4 +230,60 @@ const Card2 = [755,764]
 
 // click1(1900,800, true)
 
-click1(1564, 852, true)
+// click1(1564, 852, true)
+
+// var i = 0
+// while(i < 1) {
+//   console.log(i)
+//   i++
+// sleep1(200)
+// click1(1400, 752, true)
+//   // nextTurn()
+// }
+
+
+// events.on('exit', function() {
+  // NextImage.recycle()
+  // ContinueImage.recycle()
+  // GoldAppleImage.recycle()
+  // Attack.recycle()
+// })
+
+// initImages()
+
+function clickRefresh() {
+  findServant('caster')
+}
+events.on('exit', function() {
+  // caster.recycle()
+})
+
+var swipe1 = function(x1, y1, x2, y2, duration, r) {
+  var p1 = [x1, y1]
+  var p2 = [x2, y2]
+  if (resize) {
+    p1 = resize(x1, y1)
+    p2 = resize(x2, y2)
+  }
+  const _x1 = p1[0] + random(-10, 10)
+  const _x2 = p2[0] + random(-10, 10)
+  const _y1 = p1[1] + random(-10, 10)
+  const _y2 = p2[1] + random(-10, 10)
+  const _duration = duration + random(-100, 100)
+  swipe(_x1, _y1, _x2, _y2, _duration)
+}
+
+var i = 0
+while(i < 3) {
+  console.log(i)
+  i++
+  // click1(1420, 203, true)
+  // swipe1(1900, 900, 1900, 500, 600, true)
+  // sleep1(500)
+  // click1(1420, 742, true)
+  // sleep1(300)
+  // nextTurn()
+  // click1(1365, 471, true)
+  sleep1(300)
+  click1(1363,735, true)
+}

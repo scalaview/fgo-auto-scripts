@@ -12,13 +12,15 @@ var readImage = utils.readImage
 // autojs 这个 node 版本 const 分析的不对，没办法还是用 var 吧
 var findButton = utils.findButton
 var images = {}
+var RefreshServant = [1420, 203]
+var RefreshServantConfirm = [1420, 742]
 
 function initImages () {
   for (let key in servants) {
     images[key] = []
     for (let i = 1; i <= servants[key]; i++) {
       images[key].push(readImage(getWholePath(key, i)))
-    }    
+    }
   }
 }
 
@@ -39,6 +41,10 @@ function findServant(servant) {
   return p
 }
 
+var SwipePoint1 = [1900, 900]
+var SwipePoint2 = [1900, 500]
+var SwipeInternal = 600
+
 function findServantAndSwipe(servant) {
   let p = null
   for (let i = 0; i < 5; i++) {
@@ -47,8 +53,8 @@ function findServantAndSwipe(servant) {
     if (p) {
       return p
     }
-    swipe1(1600, 1000, 1600, 500, 600, true)
-    sleep(200)
+    swipe1(SwipePoint1[0], SwipePoint1[1], SwipePoint2[0], SwipePoint2[1], SwipeInternal, true)
+    sleep(300)
   }
   return p
 }
@@ -57,20 +63,20 @@ function find(servant) {
   p = findServantAndSwipe(servant)
 
   while (!p) {
-    click1(1566,183, true)
-    sleep1(300)
-    click1(1576,842, true)
+    click1(RefreshServant[0], RefreshServant[1], true)
+    sleep1(500)
+    click1(RefreshServantConfirm[0], RefreshServantConfirm[1], true)
     sleep1(3000)
 
     p = findServantAndSwipe(servant)
-    if (p) { 
+    if (p) {
         break
     }
     sleep1(15000)
     toast('接着找')
  }
  click1(p[0],p[1], false)
- toast('找到啦 ' + p[0] + ',' + p[1]) 
+ toast('找到啦 ' + p[0] + ',' + p[1])
  sleep1(3000)
 }
 
@@ -80,7 +86,7 @@ events.on('exit', function() {
       if (images[key][i]) {
         images[key][i].recycle()
       }
-    }    
+    }
   }
 })
 
