@@ -14,9 +14,9 @@ var resize = function(x, y) {
  */
 var click1 = function(x, y, r) {
   let p = [x, y]
-  // if (r) {
+  if (r) {
     p = resize(x, y)
-  //}
+  }
   const _x = p[0] + random(-10,10)
   const _y = p[1] + random(-10,10)
   console.log("x: ", _x, " , y: ", _y)
