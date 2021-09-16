@@ -19,7 +19,7 @@ var click1 = function(x, y, r) {
   }
   const _x = p[0] + random(-10,10)
   const _y = p[1] + random(-10,10)
-  console.log("x: ", _x, " , y: ", _y)
+  // console.log("x: ", _x, " , y: ", _y)
   click(_x, _y)
 }
 
