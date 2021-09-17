@@ -28,10 +28,10 @@ const customCmd = storage.get('customCmd') || ''
 
 toast(apple ? '吃苹果' : '不吃苹果')
 
-const Battle = [1780,750]
-const CardSP = [1199,340]
-const Card1= [275,650]
-const Card2 = [655,650]
+// const Battle = [1780,750]
+// const CardSP = [1199,340]
+// const Card1= [275,650]
+// const Card2 = [655,650]
 const NextStep = [1764, 852]
 const ContinueStep = [1400, 752]
 const ApplePosition = [1420, 742]
@@ -41,16 +41,16 @@ const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
 const Attack = readImage('./assets/attack.jpg')
 
-function fight() {
-    click1(Battle[0],Battle[1], true)
-    sleep1(2500)
-    click1(CardSP[0],CardSP[1], true)
-    sleep1(500)
-    click1(Card1[0],Card1[1], true)
-    sleep1(500)
-    click1(Card2[0],Card2[1], true)
-    sleep1(20000)
-}
+// function fight() {
+//     click1(Battle[0],Battle[1], true)
+//     sleep1(2500)
+//     click1(CardSP[0],CardSP[1], true)
+//     sleep1(500)
+//     click1(Card1[0],Card1[1], true)
+//     sleep1(500)
+//     click1(Card2[0],Card2[1], true)
+//     sleep1(20000)
+// }
 
 
 function useCustom(t) {
