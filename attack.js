@@ -60,7 +60,7 @@ function useCustom(t) {
         r.forEach((u) => {
             u.f(u.p)
         })
-        fight()
+        // fight()
     })
 }
 

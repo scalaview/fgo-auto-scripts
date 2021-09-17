@@ -75,9 +75,10 @@ function find(servant) {
     sleep1(15000)
     toast('接着找')
  }
- var y = p[1] - (200 * ( (p[1] - 500) > 0 ?  (p[1] - 500) : 0 )/ 500)
- click1(p[0], y, false)
- toast('找到啦 ' + p[0] + ',' + y)
+ var y = p[1] - (165 * ( (p[1] - 500) > 0 ?  (p[1] - 500) : 0 )/ 500)
+ var x = p[0] + 500
+ click1(x, y, false)
+ toast('找到啦 ' + x + ',' + y)
  sleep1(3000)
 }
 
