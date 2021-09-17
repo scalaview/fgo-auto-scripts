@@ -39,7 +39,8 @@ const EatAppleConfirm = [1365, 471]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
-const Attack = readImage('./assets/attack.jpg')
+var Attack = utils.Attack
+var findAttack = utils.findAttack
 
 // function fight() {
 //     click1(Battle[0],Battle[1], true)
@@ -98,16 +99,6 @@ function eatApple() {
 
 function clickRefresh() {
     findServant('caster')
-}
-
-
-function findAttack() {
-    while (!findButton(Attack, {maxTimes:1})) {
-
-    }
-    toast('进攻')
-    return true
-
 }
 
 function nextTurn() {
