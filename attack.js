@@ -47,7 +47,7 @@ function fight() {
     click1(Card2[0],Card2[1], true)
     sleep1(500)
     click1(Card3[0],Card3[1], true)
-    sleep1(30000)
+    sleep1(20000)
 }
 
 

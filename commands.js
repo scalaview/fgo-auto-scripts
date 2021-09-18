@@ -53,6 +53,7 @@ const CardSP2 = [1199,340]
 const CardSP3 = [1500,340]
 
 function useMasterSkill(i) {
+  findAttack()
   click2(MasterSkillStart[0], MasterSkillStart[1], true)
   sleep2(250)
   use(i)
