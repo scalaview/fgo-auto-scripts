@@ -228,6 +228,13 @@ module.exports = function (text) {
             console.log('指令错误', command)
             return resultText, result
           }
+          if (attackCardCount <= 0) {
+            // 打开攻击界面
+            result[i].push({
+              f: openFight,
+              p: []
+            })
+          }
           attackCardCount ++ //宝具卡
         default:
           _r['p'] =  [PointList[c[0].slice(0,-2)], AvatarList[c[4]]]
