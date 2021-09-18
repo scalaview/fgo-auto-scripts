@@ -2,7 +2,6 @@ var utils = require('./utils')
 
 var click2 = utils.click
 var sleep2 = utils.sleep
-var Attack = utils.Attack
 var findAttack = utils.findAttack
 
 const SkillY = 750
@@ -69,15 +68,16 @@ function use(t) {
   var avatar = t[1]
   findAttack()
   click2(i[0],i[1], true)
-  sleep2(300)
+  sleep2(200)
   // click2(Confirm[0],Confirm[1], true)
   sleep2(100)
   click2(avatar[0],avatar[1], true)
-  sleep2(3500)
+  sleep2(2500)
 }
 
 // t: [from, to]
 function changeServant(t) {
+  findAttack()
   click2(MasterSkillStart[0], MasterSkillStart[1], true)
   sleep2(200)
   // 换人服是三技能
@@ -94,23 +94,19 @@ function changeServant(t) {
 }
 
 function nirvana (t) {
-  click1(t[0][0], t[0][1], true)
-  sleep1(300)
+  click2(t[0][0], t[0][1], true)
+  sleep2(300)
 }
 
 function openFight() {
-  click1(Battle[0],Battle[1], true)
-  sleep1(2500)
+  findAttack()
+  click2(Battle[0],Battle[1], true)
+  sleep2(2500)
 }
 
 function normalFight (t) {
-  // click1(Card1[0],Card1[1], true)
-  // sleep1(500)
-  // click1(Card2[0],Card2[1], true)
-  // sleep1(20000)
-  console.log('normalFight', t)
-  click1(t[0][0], t[0][1], true)
-  sleep1(t[1])
+  click2(t[0][0], t[0][1], true)
+  sleep2(t[1])
 }
 
 const CommandList = {
@@ -227,6 +223,11 @@ module.exports = function (text) {
           _r['p'] =  [PointList[c[0].slice(0,-2)], attackCardCount == 3 ? 20000 : 300] // 攻击指令卡，停顿时间
           break
         case 'b':
+          if (attackCardCount >= 3){
+            toast('错误的指令')
+            console.log('指令错误', command)
+            return resultText, result
+          }
           attackCardCount ++ //宝具卡
         default:
           _r['p'] =  [PointList[c[0].slice(0,-2)], AvatarList[c[4]]]

@@ -34,8 +34,8 @@ toast(apple ? '吃苹果' : '不吃苹果')
 // const Card2 = [655,650]
 const NextStep = [1764, 852]
 const ContinueStep = [1400, 752]
-const ApplePosition = [1420, 742]
-const EatAppleConfirm = [1365, 471]
+const ApplePosition = [1365, 512]
+const EatAppleConfirm = [1420, 742]
 
 const NextImage =  readImage('./assets/next.jpg')
 const GoldAppleImage = readImage('./assets/gold_apple.jpg')
