@@ -11,6 +11,7 @@ var utils = require('./utils')
 var finder = require('./finder')
 var defaults = require('./default')
 var getCommands = require('./commands')
+var { Card1, Card2, Card3, Battle } = require('./variables')
 
 setScreenMetrics(1080, 2340)
 
@@ -28,13 +29,9 @@ const customCmd = storage.get('customCmd') || ''
 
 toast(apple ? '吃苹果' : '不吃苹果')
 
-// const Battle = [1780,750]
-// const CardSP = [1199,340]
-// const Card1= [275,650]
-// const Card2 = [655,650]
 const NextStep = [1764, 852]
 const ContinueStep = [1400, 752]
-const ApplePosition = [1365, 512]
+const ApplePosition = [1365, 482]
 const EatAppleConfirm = [1420, 742]
 
 const NextImage =  readImage('./assets/next.jpg')
@@ -42,16 +39,16 @@ const GoldAppleImage = readImage('./assets/gold_apple.jpg')
 var Attack = utils.Attack
 var findAttack = utils.findAttack
 
-// function fight() {
-//     click1(Battle[0],Battle[1], true)
-//     sleep1(2500)
-//     click1(CardSP[0],CardSP[1], true)
-//     sleep1(500)
-//     click1(Card1[0],Card1[1], true)
-//     sleep1(500)
-//     click1(Card2[0],Card2[1], true)
-//     sleep1(20000)
-// }
+function fight() {
+    click1(Battle[0],Battle[1], true)
+    sleep1(2500)
+    click1(Card1[0],Card1[1], true)
+    sleep1(500)
+    click1(Card2[0],Card2[1], true)
+    sleep1(500)
+    click1(Card3[0],Card3[1], true)
+    sleep1(30000)
+}
 
 
 function useCustom(t) {
@@ -102,16 +99,24 @@ function clickRefresh() {
 }
 
 function nextTurn() {
-    toast('完成')
+    // 可能有第4回合，平A
     let p = null
+    let ap = null
     while (!p) {
+        sleep1(300)
+        ap = findButton(Attack, {maxTimes:1})
+        if (ap) {
+          fight() //平A
+        }
         click1(NextStep[0], NextStep[1], true)
         sleep1(300)
         p = findButton(NextImage, {maxTimes:1})
     }
+    toast('完成')
     click1(ContinueStep[0], ContinueStep[1], true)
 
-}
+  }
+
 
 function useVersion() {
     switch (version) {

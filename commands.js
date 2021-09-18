@@ -3,6 +3,7 @@ var utils = require('./utils')
 var click2 = utils.click
 var sleep2 = utils.sleep
 var findAttack = utils.findAttack
+var { Card1, Card2, Battle } = require('./variables')
 
 const SkillY = 750
 const MasterSkillY = 430
@@ -45,17 +46,11 @@ const ChangeS5 = [1503, ChangeY]
 const ChangeS6 = [1800, ChangeY]
 const ChangeConfirm = [1153, 800]
 
+
 // 宝具
 const CardSP1 = [799,340]
 const CardSP2 = [1199,340]
 const CardSP3 = [1500,340]
-
-// 指令卡
-const Card1= [275,650]
-const Card2 = [655,650]
-
-// 开始攻击
-const Battle = [1780,750]
 
 function useMasterSkill(i) {
   click2(MasterSkillStart[0], MasterSkillStart[1], true)
