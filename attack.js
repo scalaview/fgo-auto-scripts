@@ -85,7 +85,7 @@ function eatApple() {
             return false
         }
         click1(ApplePosition[0], ApplePosition[1], true)
-        sleep1(300)
+        sleep1(500)
         click1(EatAppleConfirm[0], EatAppleConfirm[1], true)
         console.log('吃屎啦你')
     } else {
