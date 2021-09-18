@@ -101,7 +101,7 @@ function nirvana (t) {
 function openFight() {
   findAttack()
   click2(Battle[0],Battle[1], true)
-  sleep2(2500)
+  sleep2(3500)
 }
 
 function normalFight (t) {
