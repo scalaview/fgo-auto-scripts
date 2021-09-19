@@ -97,7 +97,9 @@ function nirvana (t) {
 function openFight() {
   findAttack()
   click2(Battle[0],Battle[1], true)
-  sleep2(3500)
+  while(!findButton(attackReturnImg, {maxTimes: 10})) {
+    sleep2(1000)
+  }
 }
 
 function normalFight (t) {

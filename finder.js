@@ -79,10 +79,8 @@ function disableAddFriend() {
 function find(servant) {
   toast('等待助战界面')
   //直到寻找助战的界面出来之前，循环检测
-  while(!findButton(haveServantsImg, {maxTimes: 1})){
-    sleep(100)
-    disableAddFriend()
-    sleep(100)
+  while(!findButton(haveServantsImg, {maxTimes: 10})){
+    sleep(1000)
   }
   toast('开始寻找助战')
   p = findServantAndSwipe(servant)
