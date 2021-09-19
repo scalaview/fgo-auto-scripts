@@ -69,7 +69,7 @@ function findServantAndSwipe(servant) {
 }
 
 function disableAddFriend() {
-  var p = findButton(addFriendImg, {maxTimes: 1})
+  var p = findButton(addFriendImg, {maxTimes: 3})
   if (p) {
     toast('发现添加好友界面，不添加')
     click1(DisableAddFriend[0], DisableAddFriend[1], true)
@@ -124,3 +124,4 @@ events.on('exit', function() {
 initImages()
 
 exports.findServant = find
+exports.disableAddFriend = disableAddFriend

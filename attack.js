@@ -18,7 +18,10 @@ setScreenMetrics(1080, 2340)
 var click1 = utils.click
 var sleep1 = utils.sleep
 var readImage = utils.readImage
-var findServant = finder.findServant
+var {
+    findServant,
+    disableAddFriend
+} = finder
 // autojs 这个 node 版本 const 分析的不对，没办法还是用 var 吧
 var findButton = utils.findButton
 
@@ -118,6 +121,8 @@ function nextTurn() {
         if (ap) {
           fight() //平A
         }
+        sleep1(300)
+        disableAddFriend()
         click1(NextStep[0], NextStep[1], true)
         sleep1(300)
         p = findButton(NextImage, {maxTimes:1})
