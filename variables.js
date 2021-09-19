@@ -6,4 +6,4 @@ exports.Card3 = [1035,650]
 // 开始攻击
 exports.Battle = [1780,750]
 
-exports.DisableAddFriend = [655, 862]
+exports.DisableAddFriend = [655, 762]
