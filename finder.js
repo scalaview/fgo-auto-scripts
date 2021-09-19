@@ -14,6 +14,15 @@ var findButton = utils.findButton
 var images = {}
 var RefreshServant = [1420, 203]
 var RefreshServantConfirm = [1420, 742]
+var {
+  DisableAddFriend
+} = require('./variables')
+
+var {
+  addFriendImg,
+  refreshServantImg,
+  haveServantsImg
+} = utils
 
 function initImages () {
   for (let key in servants) {
@@ -59,20 +68,41 @@ function findServantAndSwipe(servant) {
   return p
 }
 
+function disableAddFriend() {
+  var p = findButton(addFriendImg, {maxTimes: 1})
+  if (p) {
+    toast('发现添加好友界面，不添加')
+    click1(DisableAddFriend[0], DisableAddFriend[1], true)
+  }
+}
+
 function find(servant) {
+  toast('等待助战界面')
+  //直到寻找助战的界面出来之前，循环检测
+  while(!findButton(haveServantsImg, {maxTimes: 1})){
+    sleep(100)
+    disableAddFriend()
+    sleep(100)
+  }
+  toast('开始寻找助战')
   p = findServantAndSwipe(servant)
 
   while (!p) {
+    while(!findButton(refreshServantImg, {maxTimes: 10})){
+      sleep(1000)
+    }
     click1(RefreshServant[0], RefreshServant[1], true)
-    sleep1(500)
+    while(findButton(refreshServantImg, {maxTimes: 10})){
+      sleep(1000)
+    }
     click1(RefreshServantConfirm[0], RefreshServantConfirm[1], true)
-    sleep1(3000)
-
+    while(!findButton(refreshServantImg, {maxTimes: 10})){
+      sleep(1000)
+    }
     p = findServantAndSwipe(servant)
     if (p) {
         break
     }
-    sleep1(15000)
     toast('接着找')
  }
  var y = p[1] - (165 * ( (p[1] - 500) > 0 ?  (p[1] - 500) : 0 )/ 500)

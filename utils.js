@@ -93,6 +93,12 @@ function findAttack(display) {
 
 }
 
+let attackReturnImg = readImage('./assets/attack_return.jpg')
+let eatAppleConfirmImg = readImage('./assets/eat_apple_confirm.jpg')
+let addFriendImg = readImage('./assets/add_friend.jpg')
+let refreshServantImg = readImage('./assets/refresh_npc.jpg')
+let haveServantsImg = readImage('./assets/have_servents.jpg')
+
 exports.click = click1
 exports.sleep = sleep1
 exports.readImage = readImage
@@ -100,4 +106,9 @@ exports.findButton = findButton
 exports.stopExecution = stopExecution
 exports.swipe = swipe1
 exports.Attack = readImage('./assets/attack.jpg')
+exports.attackReturnImg = attackReturnImg
+exports.eatAppleConfirmImg = eatAppleConfirmImg
+exports.addFriendImg = addFriendImg
+exports.refreshServantImg = refreshServantImg
+exports.haveServantsImg = haveServantsImg
 exports.findAttack = findAttack
