@@ -10,7 +10,7 @@ const MasterSkillY = 430
 const ChangeY = 536
 const AvatarY = 514
 
-const Avatar1 = [732, AvatarY]
+const Avatar1 = [632, AvatarY]
 const Avatar2 = [1030, AvatarY]
 const Avatar3 = [1660, AvatarY]
 const Confirm = [1569,655]
